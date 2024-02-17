@@ -1,0 +1,38 @@
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+class Solution {
+public:
+    string reverseWords(string s) {
+        stack<string> st;
+        string words= "";
+        string reversed="";
+        for(int i=0;i<s.length();i++)
+        {   
+            words="";
+            while(s[i]!=' ' && i<s.length()){
+                words+=s[i];
+                i++;
+            }
+            st.push(words);
+
+        }
+        
+        while(!st.empty()){
+            reversed+=st.top() + " ";
+            st.pop(); 
+        }
+       
+         return reversed;
+    }
+   
+};
+int main() {
+    Solution sol;
+    std::string input = "my name is adeel";
+    std::string reversed = sol.reverseWords(input);
+    std::cout << "Reversed words: " << reversed << std::endl;
+    return 0;
+}
+
