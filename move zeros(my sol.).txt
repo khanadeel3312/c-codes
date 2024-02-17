@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& input) {
+        int i = 0;
+        int j = i + 1;
+        while (j < input.size()) {
+            if (input[i] == 0 && input[j] != 0) {
+                swap(input[i], input[j]);
+                i++;
+                j++;
+            }
+            if (input[j] == 0)
+                j++;
+            if (input[i] != 0)
+                i++;
+        }
+    }
+};
+
+int main() {
+    Solution sol;
+    vector<int> nums = {0, 1, 0, 3, 12};
+    
+    cout << "Original array: ";
+    for (int num : nums)
+        cout << num << " ";
+    cout << endl;
+
+    sol.moveZeroes(nums);
+
+    cout << "Array after moving zeroes: ";
+    for (int num : nums)
+        cout << num << " ";
+    cout << endl;
+
+    return 0;
+}

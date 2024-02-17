@@ -1,0 +1,23 @@
+
+
+vector<int> findArraySum(vector<int>& A,int n, vector<int>& B,int m) {
+    
+    int carry = 0;
+    vector<int> result;
+    
+    // Start adding digits from the least significant digit (rightmost)
+    int i = n - 1, j = m - 1;
+    while (i >= 0 || j >= 0 || carry > 0) {
+        int sum = carry;
+        if (i >= 0) sum += A[i--];
+        if (j >= 0) sum += B[j--];
+        
+        carry = sum / 10;
+        sum %= 10;
+        result.push_back(sum); // Insert the digit to the beginning of the result vector
+                
+    }
+    reverse(result.begin(),result.end());
+    
+    return result;
+}
